@@ -6,13 +6,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
+import android.content.Intent;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    ListView Lista;
     Button Agregar;
     Button Mostrar;
     EditText Nombre;
@@ -48,6 +47,10 @@ public class MainActivity extends AppCompatActivity {
 
                     Log.d(TAG, " "+ arrayList );
 
+                    Nombre.setText("");
+                    Telefono.setText("");
+                    Correo.setText("");
+
                 }
             }
         });
@@ -55,7 +58,9 @@ public class MainActivity extends AppCompatActivity {
         Mostrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent Traslado = new Intent(getApplicationContext(), Main2Activity.class);
+                getIntent().putExtra("getlista", arrayList);
+                startActivity(Traslado);
             }
         });
     }
