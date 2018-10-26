@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.ListView;
 import java.util.ArrayList;
 
+// Esta viene a ser la segunda ventana de la aplicacion
 
 public class Main2Activity extends AppCompatActivity {
     Adapter adaptador;

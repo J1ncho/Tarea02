@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+//El metodo que habia encontrado usaba un Adapter, si tu piensas que no es necesario me avisas
+
 public class Adapter extends BaseAdapter {
     private Context context;
     private ArrayList<Usuario> listaUsuarios;
