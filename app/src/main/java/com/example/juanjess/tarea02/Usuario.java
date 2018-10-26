@@ -6,15 +6,26 @@ public class Usuario {
     public String telefono;
     public String correo;
 
-    public Usuario(){
-        super();
-    }
-
     public Usuario(int img, String nombre, String telefono, String correo) {
-        super();
         this.img = img;
         this.nombre = nombre;
         this.telefono = telefono;
         this.correo = correo;
+    }
+
+    public int getImg() {
+        return img;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public String getCorreo() {
+        return correo;
     }
 }

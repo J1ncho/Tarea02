@@ -2,10 +2,13 @@ package com.example.juanjess.tarea02;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,6 +18,10 @@ public class MainActivity extends AppCompatActivity {
     EditText Nombre;
     EditText Telefono;
     EditText Correo;
+
+    ArrayList<Usuario> arrayList = new ArrayList<>();
+
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,14 +33,29 @@ public class MainActivity extends AppCompatActivity {
         Nombre=(EditText)findViewById(R.id.txtnombre);
         Telefono=(EditText)findViewById(R.id.txttelefono);
         Correo=(EditText)findViewById(R.id.txtcorreo);
-        Usuario lista_usuarios[] = new Usuario[100];
 
         Agregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(Nombre.getText().toString()!="" && Telefono.getText().toString() !="" && Correo.getText().toString()!="") {
-                    new Usuario(R.drawable.ic_launcher, Nombre.getText().toString(), Telefono.getText().toString(), Correo.getText().toString());
+                if(Nombre.getText().toString()!="" &&
+                        Telefono.getText().toString() !="" &&
+                        Correo.getText().toString()!="") {
+                    Usuario usuario = new Usuario(R.drawable.ic_launcher,
+                            Nombre.getText().toString(),
+                            Telefono.getText().toString(),
+                            Correo.getText().toString());
+                    arrayList.add(usuario);
+
+                    Log.d(TAG, " "+ arrayList );
+
                 }
+            }
+        });
+
+        Mostrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
     }
