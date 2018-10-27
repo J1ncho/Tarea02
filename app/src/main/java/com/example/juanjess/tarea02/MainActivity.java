@@ -1,5 +1,6 @@
 package com.example.juanjess.tarea02;
 
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.content.Intent;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,7 +20,10 @@ public class MainActivity extends AppCompatActivity {
     EditText Telefono;
     EditText Correo;
 
-    ArrayList<Usuario> arrayList = new ArrayList<>();
+    ArrayList<String> lnombre = new ArrayList<>();
+    ArrayList<String> ltelefono = new ArrayList<>();
+    ArrayList<String> lcorreo = new ArrayList<>();
+    ArrayList<Integer> lphoto = new ArrayList<>();
 
     private static final String TAG = "MainActivity";
 
@@ -43,9 +48,14 @@ public class MainActivity extends AppCompatActivity {
                             Nombre.getText().toString(),
                             Telefono.getText().toString(),
                             Correo.getText().toString());
-                    arrayList.add(usuario);
+                    lnombre.add(usuario.getNombre());
+                    ltelefono.add(usuario.getTelefono());
+                    lcorreo.add(usuario.getCorreo());
+                    lphoto.add(usuario.getImg());
 
-                    Log.d(TAG, " "+ arrayList );
+
+
+                    Log.d(TAG, " "+ lnombre + " " + ltelefono + " " + lcorreo);
 
                     Nombre.setText("");
                     Telefono.setText("");
@@ -58,9 +68,12 @@ public class MainActivity extends AppCompatActivity {
         Mostrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent Traslado = new Intent(getApplicationContext(), Main2Activity.class);
-                getIntent().putExtra("getlista", arrayList);
-                startActivity(Traslado);
+                Intent intent = new Intent(MainActivity.this, Main2Activity.class);
+                intent.putStringArrayListExtra("nombre",lnombre);
+                intent.putStringArrayListExtra("telefono",ltelefono);
+                intent.putStringArrayListExtra("correo",lcorreo);
+                intent.putIntegerArrayListExtra("image",lphoto);
+                startActivity(intent);
             }
         });
     }

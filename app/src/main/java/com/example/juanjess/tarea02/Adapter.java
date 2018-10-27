@@ -13,6 +13,7 @@ import java.util.ArrayList;
 //El metodo que habia encontrado usaba un Adapter, si tu piensas que no es necesario me avisas
 
 public class Adapter extends BaseAdapter {
+
     private Context context;
     private ArrayList<Usuario> listaUsuarios;
 
@@ -38,7 +39,6 @@ public class Adapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Usuario User = (Usuario) getItem(position);
 
         convertView= LayoutInflater.from(context).inflate(R.layout.vista_usuario, null);
         ImageView Imagen = (ImageView) convertView.findViewById(R.id.imagen);
@@ -46,10 +46,10 @@ public class Adapter extends BaseAdapter {
         TextView TxTelefono = (TextView) convertView.findViewById(R.id.txt2);
         TextView TxCorreo = (TextView) convertView.findViewById(R.id.txt3);
 
-        Imagen.setImageResource(User.getImg());
-        TxNombre.setText(User.getNombre());
-        TxTelefono.setText(User.getTelefono());
-        TxCorreo.setText(User.getCorreo());
+        Imagen.setImageResource(listaUsuarios.get(position).getImg());
+        TxNombre.setText(listaUsuarios.get(position).getNombre());
+        TxTelefono.setText(listaUsuarios.get(position).getTelefono());
+        TxCorreo.setText(listaUsuarios.get(position).getCorreo());
 
         return convertView;
     }
